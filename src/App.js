@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Elmex from "./elmex";
+import Meridol from "./meridol";
+import Pics from "./pics";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function Home() {
+  return <h2>Home</h2>;
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/elmex">Elmex</Link>
+            </li>
+            <li>
+              <Link to="/meridol">Meridol</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/elmex" element={<Elmex />} />
+          <Route path="/meridol" element={<Meridol />} />
+          <Route path="/pics" element={<Pics />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
